@@ -20,10 +20,10 @@ Usage (CLI):
 aws-bill-analysis --help
 
 # Show self-help for ingest command
-aws-bill-analysis ingest --help
+aws-bill-analysis ingest-cost-reports --help
 
 # Run the tool
-aws-bill-analysis ingest \
+aws-bill-analysis ingest-cost-reports \
     --s3-bucket-name my-billing-bucket \
     --base-path path/to/reports \
     --profile-name my-aws-profile \
