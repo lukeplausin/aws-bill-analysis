@@ -27,14 +27,14 @@ from .report_parser import get_available_reports, find_and_ingest_cost_reports, 
 #     pass
 
 
-@cli.command(help='List cost cliitoring reports available in S3.')
+@cli.command(help='List cost monitoring reports available in S3.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 def list_cost_reports(**kwargs):
     reports = get_available_reports(**kwargs)
     print(tabulate(reports))
 
 
-@cli.command(help='Ingest cost cliitoring reports from S3.')
+@cli.command(help='Ingest cost monitoring reports from S3.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 @click.option('--profile-name', required=False, default="my-main-account-profile", help='Name of AWS profile to use')
 @click.option('--s3-bucket-name', required=False, default="my-billing-reports", help='Name of S3 bucket')
