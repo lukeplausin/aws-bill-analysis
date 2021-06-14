@@ -83,6 +83,7 @@ for report_key in manifest['reportKeys']:
 
 * Downloads manifest file
 * Uses manifest to find data chunks
+* Reads data directly from S3 in streaming mode (lower RAM requirement, lambda compatible?)
 * Converts data types based on the report manifest
 * Strips out null columns etc
 * Augments data with additional info from the organizations api
