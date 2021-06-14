@@ -13,7 +13,28 @@ This code is in an early development state.
 pip install git+https://github.com/lukeplausin/aws-bill-analysis.git
 ```
 
-Usage:
+Usage (CLI):
+
+```bash
+# Show self-documenting CLI commands
+aws-bill-analysis --help
+
+# Show self-help for ingest command
+aws-bill-analysis ingest --help
+
+# Run the tool
+aws-bill-analysis ingest \
+    --s3-bucket-name my-billing-bucket \
+    --base-path path/to/reports \
+    --profile-name my-aws-profile \
+    --max-age 30 \
+    --es-user my-es-user \
+    --es-port 8000 \
+    --es-hostname my.es.cluster \
+    --es-password SuperSecretPassw0rd
+```
+
+Usage (python):
 
 ```python
 # Import report streamer

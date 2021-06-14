@@ -21,20 +21,20 @@ from .report_parser import get_available_reports, find_and_ingest_cost_reports, 
 ###                            CLI stuff
 ######################################################################################
 
-@cli.group(help='Bill data ingest commands')
-# @click.option('--debug/--no-debug', default=False, show_default=True)
-def ingest(**kwargs):
-    pass
+# @cli.group(help='Bill data ingest commands')
+# # @click.option('--debug/--no-debug', default=False, show_default=True)
+# def ingest(**kwargs):
+#     pass
 
 
-@mon.command(help='List cost monitoring reports available in S3.')
+@cli.command(help='List cost cliitoring reports available in S3.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 def list_cost_reports(**kwargs):
     reports = get_available_reports(**kwargs)
     print(tabulate(reports))
 
 
-@mon.command(help='Ingest cost monitoring reports from S3.')
+@cli.command(help='Ingest cost cliitoring reports from S3.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 @click.option('--profile-name', required=False, default="my-main-account-profile", help='Name of AWS profile to use')
 @click.option('--s3-bucket-name', required=False, default="my-billing-reports", help='Name of S3 bucket')
@@ -52,7 +52,7 @@ def list_cost_reports(**kwargs):
 def ingest_cost_reports(**kwargs):
     find_and_ingest_cost_reports(**kwargs)
 
-@mon.command(help='Delete elasticsearch indices.')
+@cli.command(help='Delete elasticsearch indices.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 @click.option('--index-pattern', required=True, help='Provide a regex matching pattern for the index names')
 @click.option('--force', required=False, is_flag=True, help='Confirm action (use with caution)', )
@@ -64,7 +64,7 @@ def delete_es_indices(**kwargs):
     delete_indices(**kwargs)
 
 
-@mon.command(help='List elasticsearch indices.')
+@cli.command(help='List elasticsearch indices.')
 @click.option('--max-age', required=False, default=-1, type=int, help='Oldest age of report in days (default - no limit)')
 @click.option('--index-pattern', required=False, default='*', help='Provide a regex matching pattern for the index names')
 @click.option('--es-user', required=True, help='Elasticsearch username')
